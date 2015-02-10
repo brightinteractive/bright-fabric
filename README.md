@@ -27,10 +27,15 @@ your package's `__init__.py`, then run:
 Changelog
 =========
 
+0.0.1
+-----
+
+* First release that actually contained any code!
+
 0.0.0
 -----
 
-* Initial release
+* Initial empty release
 
 
 License
