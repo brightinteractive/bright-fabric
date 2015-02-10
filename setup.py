@@ -17,6 +17,7 @@ author_email = 'francis@bright-interactive.co.uk'
 license = 'BSD'
 install_requires = [
     'Fabric>=1.8.0',
+    'bright-vc>=1.1.0,<1.2.0',
 ]
 packages = find_packages(root_package_dir)
 
