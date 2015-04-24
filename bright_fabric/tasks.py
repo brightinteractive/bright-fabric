@@ -1,7 +1,7 @@
 from fabric.api import local, settings
 from fabric.context_managers import hide
 
-from bright_fabric.fab import abs_path, find_files, jslint_file
+from bright_fabric.util import abs_path, find_files, jslint_file
 
 
 def pylint():

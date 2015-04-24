@@ -27,6 +27,14 @@ your package's `__init__.py`, then run:
 Changelog
 =========
 
+0.1.0
+-----
+
+bright_fabric.fabfile and bright_fabric.fab have been deprecated and will be
+removed in version 1.0.0.
+
+Use bright_fabric.tasks and bright_fabric.util instead
+
 0.0.1
 -----
 
