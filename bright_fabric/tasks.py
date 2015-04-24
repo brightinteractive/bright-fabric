@@ -1,11 +1,16 @@
 from fabric.api import local, settings
 from fabric.context_managers import hide
+from fabric.state import env
 
 from bright_fabric.util import abs_path, find_files, jslint_file
 
 
 def pylint():
-    flake8_command = 'flake8 --ignore=E501'
+
+    flake8_command = 'flake8'
+
+    if hasattr(env, 'flake8_ignores') and env.flake8_ignores:
+        flake8_command += ' --ignore=%s' % ','.join(env.flake8_ignores)
 
     all_files = \
         find_files(abs_path('apps'), ['py'], exclude_dirs=['migrations']) + \

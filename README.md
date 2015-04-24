@@ -11,6 +11,20 @@ Overview
 TODO
 
 
+Development
+===========
+
+Create a virtualenv and activate it:
+
+    virtualenv /path/to/env
+    . /path/to/env/bin/activate
+    
+Then install requirements for the app and for tests
+
+    pip install -e .
+    pip install -r requirements.txt
+
+
 Testing
 =======
 
