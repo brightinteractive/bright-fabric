@@ -11,6 +11,14 @@ Overview
 TODO
 
 
+Testing
+=======
+
+Run test using the command
+    
+    python -m unittest discover
+    
+
 Publishing releases to PyPI
 ===========================
 

@@ -12,7 +12,7 @@ def find_files(path, suffixes=None, exclude_dirs=None):
     found_files = []
 
     def include_file(filename, suffixes):
-        return any([filename.endswith('.' + suffix) for suffix in suffixes])
+        return suffixes is None or any([filename.endswith('.' + suffix) for suffix in suffixes])
 
     for root, dirs, files in os.walk(path):
         for exclude_dir in set(dirs) & set(exclude_dirs):
