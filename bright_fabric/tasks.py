@@ -8,18 +8,27 @@ from bright_fabric.util import abs_path, find_files, jslint_file
 def pylint():
     """
     Validates the code layout for all python files in configured paths using flake8
+
+    You can customise how this command is run by setting the following parameters
+    in the fabric configuration (either through a config file or in env)
+
+    pylint_ignore_errors: Set codes to ignore in a list (eg ['E500', 'E501'])
+    pylint_dirs: Set dirs to search for python files in (defaults to current dir)
+
     """
     flake8_command = 'flake8'
 
-    if 'flake8_ignores' in env and env.flake8_ignores:
-        flake8_command += ' --ignore=%s' % ','.join(env.flake8_ignores)
+    ignore_errors = env.get('pylint_ignore_errors')
+    if ignore_errors:
+        flake8_command += ' --ignore=%s' % ','.join(ignore_errors)
 
-    all_files = \
-        find_files(abs_path('apps'), ['py'], exclude_dirs=['migrations']) + \
-        find_files(abs_path('apps_test'), ['py'], exclude_dirs=['migrations']) + \
-        find_files(abs_path('fab'), ['py']) + \
-        find_files(abs_path('project'), ['py'], exclude_dirs=['settings']) + \
-        [abs_path('fabfile.py')]
+    dirs = env.get('pylint_dirs', ['.'])
+
+    all_files = []
+
+    for dir in dirs:
+        all_files += find_files(abs_path(dir), ['py'], exclude_dirs=['migrations'])
+
     all_files_for_cmd = "'" + "' '".join(all_files) + "'"
     with settings(hide('aborts', 'running')):
         local('%s %s' % (flake8_command, all_files_for_cmd))

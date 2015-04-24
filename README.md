@@ -18,7 +18,8 @@ Validates the code layout for all python files in configured paths using flake8
 
 ##### Configuration
 
- * flake8_ignores: Set codes to ignore in a list (eg ['E500', 'E501'])
+ * pylint_ignore_errors: Set codes to ignore in a list (eg ['E500', 'E501'])
+ * pylint_dirs: Set dirs to search for python files in (defaults to current dir)
 
 Development
 ===========
@@ -67,9 +68,15 @@ removed in version 1.0.0.
 Use bright_fabric.tasks and bright_fabric.util instead
 
 No flake8 errors are ignored by default. To return to the existing behaviour you
-have to add
+have to add this line to your fabfile.py
 
-env.flake8_ignores = ['E501']
+    env.pylint_ignore_errors = ['E501']
+
+All python files in the current folder are included by default in pylint. If you 
+want to return to a behaviour similar to the previous one use:
+    
+    env.pylint_dirs = ['project', 'apps', 'apps_test']
+
 
 0.0.1
 -----

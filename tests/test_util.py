@@ -12,7 +12,7 @@ suppress_output = partial(hide, 'everything')
 
 class UtilTests(TestCase):
 
-    test_data_path = os.path.join(os.path.dirname(__file__), 'test_data')
+    test_data_path = os.path.join(os.path.dirname(__file__), 'test_data', 'util')
     txt_in_path = [
         'one.txt',
         'two.txt',
