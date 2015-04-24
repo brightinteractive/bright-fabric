@@ -58,3 +58,19 @@ class TaskTests(TestCase):
         mock_local.assert_called_with(captor)
         self.assertTrue(captor.argument.startswith('flake8'))
         self.assertIn(os.path.abspath('fabfile.py'), captor.argument)
+
+    @patch('bright_fabric.tasks.local')
+    def test_pylint_ignores_excluded_dirs(self, mock_local):
+        with OverrideFabricConfig(pylint_exclude_dirs=['subdir']):
+            pylint()
+            captor = ArgumentCaptor()
+            mock_local.assert_called_with(captor)
+            self.assertTrue(captor.argument.startswith('flake8'))
+            self.assertNotIn(
+                os.path.abspath(
+                    os.path.join(
+                        self.test_data_path, 'subdir', 'two.py'
+                    )
+                ),
+                captor.argument
+            )

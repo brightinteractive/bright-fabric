@@ -14,20 +14,24 @@ def pylint():
 
     pylint_ignore_errors: Set codes to ignore in a list (eg ['E500', 'E501'])
     pylint_dirs: Set dirs to search for python files in (defaults to current dir)
+    pylint_exclude_dirs: Set dirs exclude when searching for python files to lint
 
     """
     flake8_command = 'flake8'
 
     ignore_errors = env.get('pylint_ignore_errors')
+
     if ignore_errors:
         flake8_command += ' --ignore=%s' % ','.join(ignore_errors)
 
     dirs = env.get('pylint_dirs', ['.'])
 
+    exclude_dirs = env.get('pylint_exclude_dirs', [])
+
     all_files = []
 
     for dir in dirs:
-        all_files += find_files(abs_path(dir), ['py'], exclude_dirs=['migrations'])
+        all_files += find_files(abs_path(dir), ['py'], exclude_dirs=exclude_dirs)
 
     all_files_for_cmd = "'" + "' '".join(all_files) + "'"
     with settings(hide('aborts', 'running')):

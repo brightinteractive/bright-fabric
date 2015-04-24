@@ -20,6 +20,7 @@ Validates the code layout for all python files in configured paths using flake8
 
  * pylint_ignore_errors: Set codes to ignore in a list (eg ['E500', 'E501'])
  * pylint_dirs: Set dirs to search for python files in (defaults to current dir)
+ * pylint_exclude_dirs: Set dirs exclude when searching for python files to lint
 
 Development
 ===========
@@ -77,6 +78,11 @@ want to return to a behaviour similar to the previous one use:
     
     env.pylint_dirs = ['project', 'apps', 'apps_test']
 
+
+No folders are excluded from pylint by default. To configure a similar behaviour
+to the previous one, use:
+
+    env.pylint_exclude_dirs = ['migrations', 'settings']
 
 0.0.1
 -----
