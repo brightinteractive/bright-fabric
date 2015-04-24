@@ -6,7 +6,9 @@ from bright_fabric.util import abs_path, find_files, jslint_file
 
 
 def pylint():
-
+    """
+    Validates the code layout for all python files in configured paths using flake8
+    """
     flake8_command = 'flake8'
 
     if hasattr(env, 'flake8_ignores') and env.flake8_ignores:

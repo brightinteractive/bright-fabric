@@ -8,8 +8,17 @@ Bright Fabric
 Overview
 ========
 
-TODO
+Useful Fabric commands to include in your projects
 
+### Commands
+
+#### fab pylint
+
+Validates the code layout for all python files in configured paths using flake8
+
+##### Configuration
+
+ * flake8_ignores: Set codes to ignore in a list (eg ['E500', 'E501'])
 
 Development
 ===========
@@ -56,6 +65,11 @@ bright_fabric.fabfile and bright_fabric.fab have been deprecated and will be
 removed in version 1.0.0.
 
 Use bright_fabric.tasks and bright_fabric.util instead
+
+No flake8 errors are ignored by default. To return to the existing behaviour you
+have to add
+
+env.flake8_ignores = ['E501']
 
 0.0.1
 -----
