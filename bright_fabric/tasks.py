@@ -11,7 +11,7 @@ def pylint():
     """
     flake8_command = 'flake8'
 
-    if hasattr(env, 'flake8_ignores') and env.flake8_ignores:
+    if 'flake8_ignores' in env and env.flake8_ignores:
         flake8_command += ' --ignore=%s' % ','.join(env.flake8_ignores)
 
     all_files = \
