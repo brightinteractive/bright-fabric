@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+
 from setuptools import setup, find_packages
 import re
 import os
@@ -54,6 +56,6 @@ setup(
 
 if display_tag_message:
     args = {'version': get_version(package)}
-    print "You probably want to also tag the version now:"
-    print "  git tag -a v%(version)s -m 'Version %(version)s'" % args
-    print "  git push --tags"
+    print("You probably want to also tag the version now:")
+    print("  git tag -a v%(version)s -m 'Version %(version)s'" % args)
+    print("  git push --tags")
