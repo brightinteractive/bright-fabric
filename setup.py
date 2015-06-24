@@ -20,6 +20,7 @@ license = 'BSD'
 install_requires = [
     'Fabric>=1.8.0,<2',
     'bright-vc>=1.1.0,<1.2.0',
+    'flake8',
 ]
 packages = find_packages(root_package_dir)
 

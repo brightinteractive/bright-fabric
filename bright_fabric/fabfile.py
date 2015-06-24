@@ -5,19 +5,13 @@ from bright_fabric.fab import abs_path, find_files, jslint_file
 
 
 def pylint():
-    PEP8_CMD = 'pep8 --repeat --ignore=E501'
-    PYFLAKES_CMD = 'pyflakes'
+    flake8_command = 'flake8 --ignore=E501'
 
     all_files = \
-        find_files(abs_path('apps'), ['py'], exclude_dirs=['migrations']) + \
-        find_files(abs_path('apps_test'), ['py'], exclude_dirs=['migrations']) + \
-        find_files(abs_path('fab'), ['py']) + \
-        find_files(abs_path('project'), ['py'], exclude_dirs=['settings']) + \
-        [abs_path('fabfile.py')]
+        find_files(abs_path('.'), ['py'], exclude_dirs=['migrations'])
     all_files_for_cmd = "'" + "' '".join(all_files) + "'"
     with settings(hide('aborts', 'running')):
-        local('%s %s' % (PEP8_CMD, all_files_for_cmd))
-        local('%s %s' % (PYFLAKES_CMD, all_files_for_cmd))
+        local('%s %s' % (flake8_command, all_files_for_cmd))
 
 
 def jslint():
