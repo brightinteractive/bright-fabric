@@ -8,8 +8,41 @@ Bright Fabric
 Overview
 ========
 
-TODO
+Useful Fabric commands to include in your projects
 
+### Commands
+
+#### fab pylint
+
+Validates the code layout for all python files in configured paths using flake8
+
+##### Configuration
+
+ * pylint_ignore_errors: Set codes to ignore in a list (eg ['E500', 'E501'])
+ * pylint_dirs: Set dirs to search for python files in (defaults to current dir)
+ * pylint_exclude_dirs: Set dirs exclude when searching for python files to lint
+
+Development
+===========
+
+Create a virtualenv and activate it:
+
+    virtualenv /path/to/env
+    . /path/to/env/bin/activate
+    
+Then install requirements for the app and for tests
+
+    pip install -e .
+    pip install -r requirements.txt
+
+
+Testing
+=======
+
+Run test using the command
+    
+    python -m unittest discover
+    
 
 Publishing releases to PyPI
 ===========================
@@ -26,6 +59,30 @@ your package's `__init__.py`, then run:
 
 Changelog
 =========
+
+0.1.0
+-----
+
+bright_fabric.fabfile and bright_fabric.fab have been deprecated and will be
+removed in version 1.0.0.
+
+Use bright_fabric.tasks and bright_fabric.util instead
+
+No flake8 errors are ignored by default. To return to the existing behaviour you
+have to add this line to your fabfile.py
+
+    env.pylint_ignore_errors = ['E501']
+
+All python files in the current folder are included by default in pylint. If you 
+want to return to a behaviour similar to the previous one use:
+    
+    env.pylint_dirs = ['project', 'apps', 'apps_test']
+
+
+No folders are excluded from pylint by default. To configure a similar behaviour
+to the previous one, use:
+
+    env.pylint_exclude_dirs = ['migrations', 'settings']
 
 0.0.1
 -----
