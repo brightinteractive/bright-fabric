@@ -47,6 +47,17 @@ Run test using the command
 Publishing releases to PyPI
 ===========================
 
+Only Bright Interactive employees can publish a release. Ensure you have a .pypirc file in your home directory configured to publish to the bright PyPI account (real password has been redacted).
+
+```
+[pypirc]
+servers = pypi
+
+[server-login]
+username:bright
+password:******
+```
+
 To publish a new version of your app to PyPI, set the `__version__` string in
 your package's `__init__.py`, then run:
 
